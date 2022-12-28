@@ -7,6 +7,11 @@ import modules.Définition as defi
 import modules.divers as divers
 from PIL import Image
 
+
+######################################
+#  Config générale de l'appli
+######################################
+
 st.set_page_config(
    page_title="Eval à la carte",
    page_icon=":boat:",
