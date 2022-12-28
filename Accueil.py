@@ -8,7 +8,7 @@ import modules.divers as divers
 from PIL import Image
 
 st.set_page_config(
-   page_title="A_la_carte",
+   page_title="Eval à la carte",
    page_icon=":boat:",
    layout="wide",
    initial_sidebar_state="expanded",
