@@ -296,7 +296,7 @@ with tab5:
 
         fichier_eval.close()
 
-        if compil in ["","O","o","oui","OUI"] :
+        if st.button("Compiler avec pdfLatex"):
             os.system("pdflatex "+nom_fichier_eval+".tex")
             #os.startfile(nom_fichier_eval+".pdf")
             subprocess.call(['pdflatex',nom_fichier_eval+".tex"])
