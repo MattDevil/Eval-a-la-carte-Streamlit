@@ -7,7 +7,7 @@ import pandas as pd
 
 def recupTitre():
     titre=""
-    titre = st.text_input(" Nom de l'évaluation : ", value="Évaluation de mathématiques", max_chars = 40, help="Tapez votre titre",)
+    titre = st.text_input(" Nom de l'évaluation : ", value="Évaluation de mathématiques", max_chars = 40, help="Tapez votre titre", label_visibility = "collapsed")
     return titre
 
 def choixNiveau():
@@ -27,12 +27,12 @@ def choixClasse():
         return choix
 
 def choixDate() :
-    return st.date_input(" Date de l'éval : ", help="Entrez la date de l'évaluation des élèves. ")
+    return st.date_input(" Date de l'éval : ", help="Entrez la date de l'évaluation des élèves. ", label_visibility = "collapsed")
 
 
 def recupEtab() :
     
-    return st.text_input(" Nom de l'établissement : ", value="Collège Coat Mez de Daoulas", max_chars = 35, help = "Tapez le nom de l'établissement",)
+    return st.text_input(" Nom de l'établissement : ", value="Collège Coat Mez de Daoulas", max_chars = 35, help = "Tapez le nom de l'établissement", label_visibility = "collapsed")
 
 
 
@@ -77,32 +77,26 @@ def recupTex(cle) :
 
 def interfaceGraphique1():
      
-    st.write("""
-
-    ##### 1. Entrer ici le titre de l'évaluation :
-    """)
-
-    titre = recupTitre()
-
-    if titre != "":
-        st.write(""" _Titre de l'évaluation :_ """, titre)
-
-    st.write(""" 
-    ##### 2. Choisir la classe évaluée :
-
-    """)
-
-    col1, col2 = st.columns(2)
-
-    with col1:
+    with st.expander("Entrer ici le titre de l'évaluation :") :
         
-        niveau = choixNiveau()
+        titre = recupTitre()
 
-    with col2:
-        classe =  choixClasse()
+        if titre != "":
+            st.markdown(":green[_Titre de l'évaluation :_] "+titre)
 
-    classe = niveau + classe
-    st.write('_La classe est :_ ', classe)
+    with st.expander("Choisir la classe évaluée :") :
+        
+        col1, col2 = st.columns(2)
+
+        with col1:
+            
+            niveau = choixNiveau()
+
+        with col2:
+            classe =  choixClasse()
+
+        classe = niveau + classe
+        st.write('_La classe est :_ ', classe)
 
 
     st.write(""" 
