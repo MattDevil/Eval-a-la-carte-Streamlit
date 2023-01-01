@@ -9,8 +9,9 @@
 ### Lancer l'application localement
 
 ```bash
-
-streamlit run Accueil.py
+$ cd chemin/vers/ALaCarte
+$ pipenv shell
+$ streamlit run Accueil.py
 
 ```
 
