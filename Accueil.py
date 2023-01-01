@@ -198,7 +198,6 @@ with tab6:
         nom_fichier_preambule="en-tete_fichier.tex"
         fichier_preambule=open(nom_fichier_preambule, "r", encoding='UTF-8')
         texte_preambule=fichier_preambule.read()
-        st.write(texte_preambule)
         fichier_preambule.close()
         print(texte_preambule,file=fichier_eval)
         
@@ -226,11 +225,7 @@ with tab6:
         k=0
 
         for demandes_eleve in liste_demandes :
-            titre="Pour "+demandes_eleve[0]
-            print(titre.center(50,'-'))
-            if len(demandes_eleve)==0 :
-                print("Aucune demande")
-            else :
+            if len(demandes_eleve) !=0 :
                 texte_en_tete_perso=texte_en_tete
                 texte_en_tete_perso=texte_en_tete_perso.replace("@NOM@",demandes_eleve[0])
                 texte_en_tete_perso=texte_en_tete_perso.replace("@date@",date) # Ajout de la date du devoir dans l'entête
@@ -297,11 +292,14 @@ with tab6:
         print("\\end{document}",file=fichier_eval)
 
         fichier_eval.close()
+        
+        with open(fichier_eval, 'rb') as f:
+        st.download_button('Téléchargez le fichier .tex', f, file_name=fichier_eval)
+            
+            
 
-        if st.button("Compiler avec pdfLatex"):
-            os.system("pdflatex "+nom_fichier_eval+".tex")
+
+        if st.button("Effacer le fichier .tex"):
+            os.system("rm "+nom_fichier_eval)
             #os.startfile(nom_fichier_eval+".pdf")
-            subprocess.call(['pdflatex',nom_fichier_eval+".tex"])
-
-
-
+            subprocess.call(['rm',nom_fichier_eval])
