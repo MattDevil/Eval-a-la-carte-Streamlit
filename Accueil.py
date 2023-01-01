@@ -32,20 +32,40 @@ with st.sidebar :
     st.image(image)
     
     with st.expander("Licence / crédits"):
-        st.write("""
-        Version : 0.2 du 26-12-2022
+        st.markdown('''
+        Version : 0.3 du 01-01-2023
 
         Auteur : Matthieu DEVILLERS matthieu.devillers@ac-rennes.fr
 
         Licence : [CC-BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
-        """)
+        
+        Une partie du code provient d'un [script python](http://revue.sesamath.net/spip.php?article535) écrit par Rémi Angot et mis à disposition sous licence A-GPL
+        
+         
+        ''')
         
     with st.expander("Documentation"):
-        st.write("Test MarKdown")
-        st.markdown('Streamlit is **_really_ cool**.')
-        st.markdown("This text is :red[colored red], and this is **:blue[colored]** and bold.")
-        st.markdown(":green[$\sqrt{x^2+y^2}=1$] is a Pythagorean identity. :pencil:")
-
+        st.markdown(""" Pour installer et utiliser cette application en local, il vous faudra :""")
+        st.markdown("""                    
+        ##### 1. Cloner le dépot ou télécharger l'ensemble des fichiers. 
+        
+        ##### 2. Installer streamlit sur votre machine en suivant cette [Documentation](https://docs.streamlit.io/library/get-started/installation)
+        
+        ##### 3. Lancer l'application localement
+        
+        """)
+        
+        st.markdown("""
+        ```bash
+        
+        cd EVAL_A_La_Carte
+        
+        pipenv shell
+        
+        streamlit run Accueil.py
+        ```        
+        """)
+        
 ######################################
 #   Page principale
 ######################################
@@ -63,20 +83,20 @@ st.write("""
 #####################################
 
 
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["Accueil","Paramètres", "Bilan", "Import", "Export"])
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["Accueil","Paramètres", "Options", "Bilan", "Import", "Export"])
 
 with tab1:
     
     st.write("""
 
 
-    Paramétrez l'évaluation dans *Paramètres*.
+    Paramétrez l'évaluation dans *Paramètres* et choisissez ensuite les *options*.
     
-    Vérifiez vos choix dans *"Bilan"*.
+    Vérifiez vos choix dans *Bilan*.
 
-    Ajoutez les demandes des élèves dans *"Import"*.
+    Ajoutez les demandes des élèves dans *Import*.
 
-    Générez et téléchargez l'évaluation dans *"Export"*.
+    Générez et téléchargez l'évaluation au format .tex dans *Export*.
 
     """)
 
@@ -86,11 +106,14 @@ with tab2:
     
     informations = defi.interfaceGraphique1()
     
-    informations2 = defi.interfaceGraphique2()
-
-
+    
 
 with tab3:
+    
+    informations2 = defi.interfaceGraphique2()
+    
+
+with tab4:
     st.write('''
     ##### Les paramétres suivants seront utilisés :
 
@@ -99,18 +122,18 @@ with tab3:
     col10, col20 = st.columns(2, gap="medium")
 
     with col10:
-        infos = ["Nom de l'établissement","Titre de l'évaluation","Date de l'évaluation","Classe ou groupe évalué"]
-        for i in range(4):
+        infos = ["Nom de l'établissement","Titre de l'évaluation","Date de l'évaluation","Classe ou groupe évalué","Nom du fichier .tex créé"]
+        for i in range(5):
             st.write(infos[i]," : ",informations[i])  
 
     with col20:
-        infos2 = ["Nom du fichier .tex","Présence d'exercice(s) commun(s)", "Présence d'un exercice facultatif", "Que les exercices communs"]
-        for i in range(4):
+        infos2 = ["Présence d'exercice(s) commun(s)", "Présence d'un exercice facultatif", "Que les exercices communs"]
+        for i in range(3):
             st.write(infos2[i]," : ",informations2[i])
 
 
 
-with tab4:
+with tab5:
     compteur = 1
     
     html_str = f"""
@@ -120,10 +143,10 @@ with tab4:
      
     demandes = defi.recupDemandes()
     
-    if informations2[1] == "o" :
+    if informations2[0] == "Oui" :
         compteur +=1
         html_str2 = f"""
-        <h5>{compteur}. Glissez-déposez ici le fichier tex des exercices communs : </h5>
+        <h5>{compteur}. Glissez-déposez ici le fichier .tex des exercices communs : </h5>
         """
         st.markdown(html_str2, unsafe_allow_html=True)
 
@@ -134,7 +157,7 @@ with tab4:
         
         compteur +=1
         html_str3 = f"""
-        <h5>{compteur}. Glissez-déposez ici le fichier tex des compétences des exercices communs : </h5>
+        <h5>{compteur}. Glissez-déposez ici le fichier .tex des compétences des exercices communs : </h5>
         """
         st.markdown(html_str3, unsafe_allow_html=True)
 
@@ -144,11 +167,11 @@ with tab4:
                 f.write(compeCommuns.getbuffer())
          
         
-    if informations2[2] == "o" :
+    if informations2[1] == "Oui" :
         
         compteur +=1
         html_str4 = f"""
-        <h5>{compteur}. Glissez-déposez ici le fichier tex de l'exercice facultatif : </h5>
+        <h5>{compteur}. Glissez-déposez ici le fichier .tex de l'exercice facultatif : </h5>
         """
         st.markdown(html_str4, unsafe_allow_html=True)
 
@@ -159,7 +182,7 @@ with tab4:
         
         compteur +=1
         html_str5 = f"""
-        <h5>{compteur}. Glissez-déposez ici le fichier tex des compétences de l'exercice facultatif : </h5>
+        <h5>{compteur}. Glissez-déposez ici le fichier .tex des compétences de l'exercice facultatif : </h5>
         """
         st.markdown(html_str5, unsafe_allow_html=True)
 
@@ -169,7 +192,7 @@ with tab4:
                 f.write(compeFacultatif.getbuffer())
  
    
-with tab5:
+with tab6:
     if st.button("Générer l'évaluation"):
         liste_noms_items=[]
         date = informations[2]
@@ -181,15 +204,11 @@ with tab5:
         repertoire_items='items'
         classe= informations[3]
         titreeval= informations[1]
-        nom_fichier_eval= informations2[0]
-        devoirclasse= informations2[3]
-        exofacultatif=informations2[2]
+        nom_fichier_eval= informations[4]
+        devoirclasse= informations2[2]
+        exofacultatif=informations2[1]
  
-#         Tab1=("date", "repertoire_items", "classe", "titreeval", "nom_fichier_eval","devoirclasse", "exofacultatif", "sep")
-#         Tab2=(date, repertoire_items, classe, titreeval, nom_fichier_eval,devoirclasse, exofacultatif, sep)
-#         for i in range (8) :
-#             st.write(Tab1[i]," = ", Tab2[i])
-          
+    
         # Création du fichier nom_fichier_eval.tex
 
         fichier_eval = open(nom_fichier_eval, "a", encoding='UTF-8')
@@ -246,7 +265,7 @@ with tab5:
         #--------------------
                 print("\\input{tableau-item-classe.tex} ",file=fichier_eval)
                 
-                if informations2[1] == "o" :
+                if informations2[0] == "o" :
                     print("\\input{tableau-items-communs.tex} ",file=fichier_eval)
                 
 
@@ -260,7 +279,7 @@ with tab5:
                     print("* ",nom_item," & & & & & \\\ ",file=fichier_eval)
                     print("\\hline",file=fichier_eval)
                 
-                if informations2[2]=="o" :
+                if informations2[1]=="o" :
                     print("\\input{tableau-facultatif.tex} \\",file=fichier_eval)
               
                 print("\end{tabular}",file=fichier_eval)
@@ -269,7 +288,7 @@ with tab5:
         #--------------------
         # Ajout des exercices communs à la classe.
         #--------------------
-                if informations2[1] == "o" :
+                if informations2[0] == "o" :
                     print("\\input{exercices-communs.tex} \\",file=fichier_eval)
                 
                 
@@ -293,7 +312,7 @@ with tab5:
         #--------------------        
 
                 
-                if informations2[2]=="o" :
+                if informations2[1]=="o" :
                     print("\\input{facultatif.tex} \\",file=fichier_eval)                        
 
                                              
