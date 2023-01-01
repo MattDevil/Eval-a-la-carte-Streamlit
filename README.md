@@ -18,9 +18,9 @@ $ streamlit run Accueil.py
 ### TODO
 
 * [ ] Faire le point sur la licence du code et créditer Rémi
-* [ ]  Fixer par défaut la date de l'évaluation avec la date issue du fichier demandes.csv de SACoche
-* [ ] Fixer par defaut le titre de l'évaluation avec le titre issu du fichier demandes.csv de SACoche
-* [ ] Fixer par defaut le titre de l'évaluation avec le titre issu du fichier demandes.csv de SACoche
+* [ ]  ~Fixer par défaut la date de l'évaluation avec la date issue du fichier demandes.csv de SACoche.~
+* [ ] ~Fixer par defaut le titre de l'évaluation avec le titre issu du fichier demandes.csv de SACoche.~
+* [ ] ~Fixer par defaut la classe avec la classe issue du fichier demandes.csv de SACoche.~
 * [ ] Possibilité de ranger les fichiers tex des exercices dans des sous-répertoires (un par referentiel) et possibilité de choisir le référentiel utilisé lors de la création de l'évaluation.
 * [ ] interface pour ajouter des référentiels / ajouter des exercices.
 * [ ] Possibilité de télécharger des fichiers exemples pour demandes.csv, facultatif.tex, commun.tex et tableaux items correspondants. 
