@@ -7,7 +7,7 @@ import pandas as pd
 
 def recupTitre():
     titre=""
-    titre = st.text_input(" Nom de l'évaluation : ", value="Évaluation de mathématiques", max_chars = 40, help="Tapez votre titre", label_visibility = "collapsed")
+    titre = st.text_input(" Nom de l'évaluation : ", value="Évaluation de mathématiques", max_chars = 40, help="Tapez votre titre",) # label_visibility = "collapsed")
     return titre
 
 def choixNiveau():
@@ -27,12 +27,12 @@ def choixClasse():
         return choix
 
 def choixDate() :
-    return st.date_input(" Date de l'éval : ", help="Entrez la date de l'évaluation des élèves. ", label_visibility = "collapsed")
+    return st.date_input(" Date de l'éval : ", help="Entrez la date de l'évaluation des élèves. ",) # label_visibility = "collapsed")
 
 
 def recupEtab() :
     
-    return st.text_input(" Nom de l'établissement : ", value="Collège Coat Mez de Daoulas", max_chars = 35, help = "Tapez le nom de l'établissement", label_visibility = "collapsed")
+    return st.text_input(" Nom de l'établissement : ", value="Collège Coat Mez de Daoulas", max_chars = 35, help = "Tapez le nom de l'établissement",)# label_visibility = "collapsed")
 
 
 
