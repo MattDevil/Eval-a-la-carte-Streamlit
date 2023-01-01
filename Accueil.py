@@ -287,16 +287,24 @@ with tab6:
                 
                 if informations2[1]=="o" :
                     print("\\input{facultatif.tex} \\",file=fichier_eval)                        
-
+                print("\\newpage",file=fichier_eval)
                                              
         print("\\end{document}",file=fichier_eval)
 
         fichier_eval.close()
         
-        if st.button("Compiler avec pdfLatex"):
-            os.system("pdflatex "+nom_fichier_eval)
+        if st.button("Compiler pdfLatex"):
+            os.system("pdflatex "+nom_fichier_eval+".tex")
             #os.startfile(nom_fichier_eval+".pdf")
-            subprocess.call(["pdflatex ",nom_fichier_eval])
+            subprocess.call(['pdflatex',nom_fichier_eval+".tex"])
+
+
+        
+        
+        #if st.button("Compiler avec pdfLatex"):
+        #    os.system("pdflatex "+nom_fichier_eval)
+            #os.startfile(nom_fichier_eval+".pdf")
+        #    subprocess.call(["pdflatex ",nom_fichier_eval])
             nom_fichier_pdf = nom_fichier_eval[:-3]+"pdf"
             print(nom_fichier_pdf)
             with open(nom_fichier_eval, 'rb') as f:
