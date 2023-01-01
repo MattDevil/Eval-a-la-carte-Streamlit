@@ -297,7 +297,7 @@ with tab6:
             os.system("pdflatex "+nom_fichier_eval)
             #os.startfile(nom_fichier_eval+".pdf")
             subprocess.call(['pdflatex',nom_fichier_eval])
-            nom_fichier_pdf = nom_fichier_eval[0:-3]+"pdf"
+            nom_fichier_pdf = nom_fichier_eval[:-3]+"pdf"
             st.write(nom_fichier_pdf)
         with open(nom_fichier_eval, 'rb') as f:
             if st.download_button('Téléchargez le fichier .tex', f, file_name=nom_fichier_eval):
