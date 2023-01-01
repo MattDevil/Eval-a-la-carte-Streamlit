@@ -29,4 +29,5 @@ $ streamlit run Accueil.py
 * [ ] Améliorer (nom des variables...)
 * [ ] Ouvrir le projet à des contributions extérieures
 * [ ] Déployer l'application sur un serveur
+* [ ] éviter la MAJ des certains fichiers (pifile py_cache etc...) 
 
