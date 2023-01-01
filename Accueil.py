@@ -294,7 +294,7 @@ with tab6:
         fichier_eval.close()
         
         with open(fichier_eval, 'rb') as f:
-        st.download_button('Téléchargez le fichier .tex', f, file_name=fichier_eval)
+            st.download_button('Téléchargez le fichier .tex', f, file_name=fichier_eval)
             
             
 
