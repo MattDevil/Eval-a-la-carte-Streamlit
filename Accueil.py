@@ -296,7 +296,7 @@ with tab6:
         if st.button("Compiler avec pdfLatex"):
             os.system("pdflatex "+nom_fichier_eval)
             #os.startfile(nom_fichier_eval+".pdf")
-            subprocess.call(['pdflatex',nom_fichier_eval"])
+            subprocess.call(['pdflatex',nom_fichier_eval])
             nom_fichier_pdf = nom_fichier_eval[0:-3]+"pdf"
             st.write(nom_fichier_pdf)
         with open(nom_fichier_eval, 'rb') as f:
