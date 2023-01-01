@@ -219,13 +219,13 @@ with tab6:
         #--------------------
         #os.makedirs('temp', exist_ok=True)
         demandes.to_csv('Listedemandes.csv')
-                
+        liste_noms_items=[]
         liste_demandes,liste_noms_items=divers.analyse_demandes("Listedemandes.csv",liste_noms_items)
         
         k=0
 
         for demandes_eleve in liste_demandes :
-            if len(demandes_eleve) !=0 :
+            if len(demandes_eleve[0]) !=0 :
                 texte_en_tete_perso=texte_en_tete
                 texte_en_tete_perso=texte_en_tete_perso.replace("@NOM@",demandes_eleve[0])
                 texte_en_tete_perso=texte_en_tete_perso.replace("@date@",date) # Ajout de la date du devoir dans l'entête
