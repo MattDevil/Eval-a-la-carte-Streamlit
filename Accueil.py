@@ -135,45 +135,28 @@ with tab4:
 
 with tab5:
     compteur = 1
-    
-    html_str = f"""
-    <h5>{compteur}. Glissez-déposez ici le fichier csv des demandes des élèves (export SACoche) : </h5>
-    """
-    st.markdown(html_str, unsafe_allow_html=True)
-     
+    st.markdown(str(compteur)+". Glissez-déposez ici le fichier csv des demandes des élèves (export SACoche) : ") 
     demandes = defi.recupDemandes()
     
     if informations2[0] == "Oui" :
         compteur +=1
-        html_str2 = f"""
-        <h5>{compteur}. Glissez-déposez ici le fichier .tex des exercices communs : </h5>
-        """
-        st.markdown(html_str2, unsafe_allow_html=True)
-
+        st.markdown(str(compteur)+". Glissez-déposez ici le fichier .tex des exercices communs : ")
         communs = defi.recupTex(1)
         if communs is not None:
             with open(os.path.join(communs.name),"wb") as f:
                 f.write(communs.getbuffer())
         
         compteur +=1
-        html_str3 = f"""
-        <h5>{compteur}. Glissez-déposez ici le fichier .tex des compétences des exercices communs : </h5>
-        """
-        st.markdown(html_str3, unsafe_allow_html=True)
-
+        st.markdown(str(compteur)+". Glissez-déposez ici le fichier .tex des compétences des exercices communs : ")
         compeCommuns = defi.recupTex(2)
         if compeCommuns is not None:
             with open(os.path.join(compeCommuns.name),"wb") as f:
                 f.write(compeCommuns.getbuffer())
          
-        
     if informations2[1] == "Oui" :
         
         compteur +=1
-        html_str4 = f"""
-        <h5>{compteur}. Glissez-déposez ici le fichier .tex de l'exercice facultatif : </h5>
-        """
-        st.markdown(html_str4, unsafe_allow_html=True)
+        st.markdown(str(compteur)+". Glissez-déposez ici le fichier .tex de l'exercice facultatif : ")
 
         facultatif = defi.recupTex(3)
         if facultatif is not None:
@@ -181,17 +164,12 @@ with tab5:
                 f.write(facultatif.getbuffer())
         
         compteur +=1
-        html_str5 = f"""
-        <h5>{compteur}. Glissez-déposez ici le fichier .tex des compétences de l'exercice facultatif : </h5>
-        """
-        st.markdown(html_str5, unsafe_allow_html=True)
-
+        st.markdown(str(compteur)+". Glissez-déposez ici le fichier .tex des compétences de l'exercice facultatif : ")
         compeFacultatif = defi.recupTex(4)
         if compeFacultatif is not None:
             with open(os.path.join(compeFacultatif.name),"wb") as f:
                 f.write(compeFacultatif.getbuffer())
  
-   
 with tab6:
     if st.button("Générer l'évaluation"):
         liste_noms_items=[]

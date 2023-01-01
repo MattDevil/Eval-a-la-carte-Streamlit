@@ -35,7 +35,7 @@ def recupEtab() :
     return st.text_input(" Nom de l'établissement : ", value="Collège Coat Mez de Daoulas", max_chars = 35, help = "Tapez le nom de l'établissement",label_visibility = "collapsed")
 
 def recupDemandes() :
-    fichierdemandes = st.file_uploader("Fichier demandes.csv de SACoche")
+    fichierdemandes = st.file_uploader("Fichier demandes.csv de SACoche", label_visibility = "collapsed")
     sep=";"
     sep = st.radio('CHOIX DU SEPARATEUR CSV', (';', ',', 'une tabulation', 'un espace'), horizontal = True) 
 
