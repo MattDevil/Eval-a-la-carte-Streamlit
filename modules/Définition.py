@@ -77,14 +77,14 @@ def recupTex(cle) :
 
 def interfaceGraphique1():
      
-    with st.expander("Entrer ici le titre de l'évaluation :") :
+    with st.expander("1. Entrer ici le titre de l'évaluation :") :
         
         titre = recupTitre()
 
         if titre != "":
             st.markdown(":green[_Titre de l'évaluation :_] "+titre)
 
-    with st.expander("Choisir la classe évaluée :") :
+    with st.expander("2. Choisir la classe évaluée :") :
         
         col1, col2 = st.columns(2)
 
@@ -99,23 +99,15 @@ def interfaceGraphique1():
         st.write('_La classe est :_ ', classe)
 
 
-    st.write(""" 
-    ##### 3. Entrer ici la date de l'évaluation :
-
-    """)
-
-    date = choixDate()
-
-    if date != "":
-        st.write(""" _La date de l'évaluation est le :_ """, date.strftime("%d/%m/%Y"))
+    with st.expander("3. Entrer ici la date de l'évaluation :") :
+        date = choixDate()
+        if date != "":
+            st.markdown(":green[_La date de l'évaluation est le :_]"+date.strftime("%d/%m/%Y"))
         
-        
-    st.write(""" 
-    ##### 4. Entrer ici le nom de l'établissement :
-
-    """)
-    
-    etab = recupEtab()
+    with st.expander("4. Entrer ici le nom de l'établissement :") :
+        etab = recupEtab()
+        if etab != "":
+            st.markdown(":green[_Le nom de l'établissement est : ]"+etab)
         
     return (etab, titre, date.strftime("%d/%m/%Y"), classe)
 
