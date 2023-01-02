@@ -226,6 +226,7 @@ with tab6:
 
         for demandes_eleve in liste_demandes :
             if len(demandes_eleve[0]) < 2 :
+                k+=1
                 pass
             else :
                 texte_en_tete_perso=texte_en_tete
