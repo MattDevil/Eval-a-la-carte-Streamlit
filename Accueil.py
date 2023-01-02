@@ -148,24 +148,22 @@ with tab5:
         
         compteur +=1
         st.markdown(str(compteur)+". Glissez-déposez ici le fichier .tex des compétences des exercices communs : ")
-        compeCommuns = defi.recupTex(2)
+        compeCommuns = defi.recupTex2()
         if compeCommuns is not None:
             with open(os.path.join(compeCommuns.name),"wb") as f:
                 f.write(compeCommuns.getbuffer())
          
     if informations2[1] == "Oui" :
-        
         compteur +=1
         st.markdown(str(compteur)+". Glissez-déposez ici le fichier .tex de l'exercice facultatif : ")
-
-        facultatif = defi.recupTex(3)
+        facultatif = defi.recupTex3()
         if facultatif is not None:
             with open(os.path.join(facultatif.name),"wb") as f:
                 f.write(facultatif.getbuffer())
         
         compteur +=1
         st.markdown(str(compteur)+". Glissez-déposez ici le fichier .tex des compétences de l'exercice facultatif : ")
-        compeFacultatif = defi.recupTex(4)
+        compeFacultatif = defi.recupTex4()
         if compeFacultatif is not None:
             with open(os.path.join(compeFacultatif.name),"wb") as f:
                 f.write(compeFacultatif.getbuffer())

@@ -54,19 +54,6 @@ def recupDemandes() :
             st.error("Erreur, cela ne semble pas être un fichier csv. Chargez un autre fichier SVP")
         return None
 
-def recupTex(cle) :
-    
-    fichierTex = st.file_uploader("Fichier Communs.tex contenant les exercices", key=str(cle+random.random()), label_visibility = "collapsed")
-
-    if fichierTex is not None and fichierTex.name[-4:] == ".tex" :
-
-        st.success("Fichier bien reçu !")
-        return fichierTex
-    else :
-        if fichierTex is not None :
-            st.error("Erreur, cela ne semble pas être un fichier tex. Chargez un autre fichier SVP")
-        return None
-
 def recupTex1() :
     
     fichierTex = st.file_uploader("Fichier Communs.tex contenant les exercices", label_visibility = "collapsed")
@@ -79,6 +66,48 @@ def recupTex1() :
         if fichierTex is not None :
             st.error("Erreur, cela ne semble pas être un fichier tex. Chargez un autre fichier SVP")
         return None
+
+def recupTex2() :
+    
+    fichierTex = st.file_uploader("Fichier itemsCommuns.tex contenant le tableau de compétences", label_visibility = "collapsed")
+
+    if fichierTex is not None and fichierTex.name[-4:] == ".tex" :
+
+        st.success("Fichier bien reçu !")
+        return fichierTex
+    else :
+        if fichierTex is not None :
+            st.error("Erreur, cela ne semble pas être un fichier tex. Chargez un autre fichier SVP")
+        return None
+
+def recupTex3() :
+    
+    fichierTex = st.file_uploader("Fichier facultatifs.tex contenant les exercices facultatifs", label_visibility = "collapsed")
+
+    if fichierTex is not None and fichierTex.name[-4:] == ".tex" :
+
+        st.success("Fichier bien reçu !")
+        return fichierTex
+    else :
+        if fichierTex is not None :
+            st.error("Erreur, cela ne semble pas être un fichier tex. Chargez un autre fichier SVP")
+        return None
+
+
+
+def recupTex4() :
+    
+    fichierTex = st.file_uploader("Fichier itemsFacultatifs.tex contenant le tableau de compétences", label_visibility = "collapsed")
+
+    if fichierTex is not None and fichierTex.name[-4:] == ".tex" :
+
+        st.success("Fichier bien reçu !")
+        return fichierTex
+    else :
+        if fichierTex is not None :
+            st.error("Erreur, cela ne semble pas être un fichier tex. Chargez un autre fichier SVP")
+        return None
+
 
 def recupNom():
     titre = st.text_input(" Nom du fichier : ", value="EvalALaCarte", key = 1, max_chars = 30, help="Personnalisez le nom du fichier.",)
