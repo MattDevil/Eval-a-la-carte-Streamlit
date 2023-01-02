@@ -34,7 +34,7 @@ def analyse_demandes(fichier_csv_sacoche, liste_noms_items) :
     liste_demandes=[]
     
     fichier_demandes=open(fichier_csv_sacoche,"r",encoding="UTF-8")
-    lecture=csv.reader(fichier_demandes,delimiter=",",)
+    lecture=csv.reader(fichier_demandes,delimiter=",")
 
     for ligne in lecture :
         tableau.append(ligne)
@@ -45,7 +45,7 @@ def analyse_demandes(fichier_csv_sacoche, liste_noms_items) :
     nbr_lignes=len(tableau)
     ligne_noms=nbr_lignes-7
     colonne_items=nbr_colonnes-1
-    for eleve in range(1,colonne_items) :
+    for eleve in range(2,colonne_items) :
         liste_demandes_temp=[]
         liste_noms_items_temp=[] # liste temporaire
         liste_demandes_temp.append(tableau[ligne_noms][eleve])

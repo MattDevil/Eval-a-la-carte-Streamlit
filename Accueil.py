@@ -141,7 +141,7 @@ with tab5:
     if informations2[0] == "Oui" :
         compteur +=1
         st.markdown(str(compteur)+". Glissez-déposez ici le fichier .tex des exercices communs : ")
-        communs = defi.recupTex(1)
+        communs = defi.recupTex1()
         if communs is not None:
             with open(os.path.join(communs.name),"wb") as f:
                 f.write(communs.getbuffer())
@@ -225,8 +225,7 @@ with tab6:
         k=0
 
         for demandes_eleve in liste_demandes :
-            if len(demandes_eleve[0]) < 2 :
-                k+=1
+            if len(demandes_eleve) == 0 :
                 pass
             else :
                 texte_en_tete_perso=texte_en_tete

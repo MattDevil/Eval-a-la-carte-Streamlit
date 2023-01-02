@@ -61,11 +61,24 @@ def recupTex(cle) :
     if fichierTex is not None and fichierTex.name[-4:] == ".tex" :
 
         st.success("Fichier bien reçu !")
-        
+        return fichierTex
     else :
         if fichierTex is not None :
             st.error("Erreur, cela ne semble pas être un fichier tex. Chargez un autre fichier SVP")
-    return fichierTex
+        return None
+
+def recupTex1() :
+    
+    fichierTex = st.file_uploader("Fichier Communs.tex contenant les exercices", label_visibility = "collapsed")
+
+    if fichierTex is not None and fichierTex.name[-4:] == ".tex" :
+
+        st.success("Fichier bien reçu !")
+        return fichierTex
+    else :
+        if fichierTex is not None :
+            st.error("Erreur, cela ne semble pas être un fichier tex. Chargez un autre fichier SVP")
+        return None
 
 def recupNom():
     titre = st.text_input(" Nom du fichier : ", value="EvalALaCarte", key = 1, max_chars = 30, help="Personnalisez le nom du fichier.",)
