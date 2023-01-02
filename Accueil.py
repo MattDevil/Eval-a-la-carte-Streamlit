@@ -225,7 +225,9 @@ with tab6:
         k=0
 
         for demandes_eleve in liste_demandes :
-            if len(demandes_eleve[0]) > 2 :
+            if len(demandes_eleve[0]) < 2 :
+                pass
+            else :
                 texte_en_tete_perso=texte_en_tete
                 texte_en_tete_perso=texte_en_tete_perso.replace("@NOM@",demandes_eleve[0])
                 texte_en_tete_perso=texte_en_tete_perso.replace("@date@",date) # Ajout de la date du devoir dans l'entête
@@ -288,8 +290,6 @@ with tab6:
                 if informations2[1]=="o" :
                     print("\\input{facultatif.tex} \\",file=fichier_eval)                        
                 print("\\newpage",file=fichier_eval)
-            else :
-                pass
                                              
         print("\\end{document}",file=fichier_eval)
 
