@@ -28,6 +28,7 @@ $ streamlit run Accueil.py
 * [ ] Commenter le code
 * [ ] Améliorer (nom des variables...)
 * [ ] Ouvrir le projet à des contributions extérieures
-* [ ] Déployer l'application sur un serveur
-* [ ] éviter la MAJ des certains fichiers (pifile py_cache etc...) 
+* [X] Déployer l'application sur un serveur
+* [ ] éviter la MAJ des certains fichiers (pifile py_cache etc...)
+* [x] Implémenter le téléchargement du fichier tex créé (indispensable en mode serveur).
 
