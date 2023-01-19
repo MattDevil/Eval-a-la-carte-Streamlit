@@ -302,10 +302,11 @@ with tab6:
         # st.write(nom_fichier_pdf)
         with open(nom_fichier_eval, 'rb') as f:
             if st.download_button('Téléchargez le fichier .tex', f, file_name=nom_fichier_eval):
-                if st.button("Effacer le fichier .tex"):
-                    os.system("rm "+nom_fichier_eval)
-                    #os.startfile(nom_fichier_eval+".pdf")
-                    subprocess.call(['rm',nom_fichier_eval])
-                    st.write("Done")
-                    f.close()
+            if st.button("Effacer le fichier .tex"):
+                os.system("rm "+nom_fichier_eval)
+                #os.startfile(nom_fichier_eval+".pdf")
+                subprocess.call(['rm',nom_fichier_eval])
+                st.write("Done")
+                f.close()
+    
     
