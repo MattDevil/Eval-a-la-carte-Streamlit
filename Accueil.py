@@ -9,7 +9,7 @@ from PIL import Image
 
 
 ######################################
-#  Config générale de l'appli
+#  Config générale
 ######################################
 
 st.set_page_config(
@@ -67,7 +67,7 @@ with st.sidebar :
         """)
         
 ######################################
-#   Page principale
+#   Titre
 ######################################
 demandes = []
 
@@ -76,11 +76,9 @@ st.write("""
 
 """)
 
-
-
-#####################################
-#   Pages intérieures
-#####################################
+######################################
+#   Onglets
+#######################################
 
 
 tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["Accueil","Paramètres", "Options", "Bilan", "Import", "Export"])
@@ -143,15 +141,13 @@ with tab5:
         st.markdown(str(compteur)+". Glissez-déposez ici le fichier .tex des exercices communs : ")
         communs = defi.recupTex1()
         if communs is not None:
-            with open(os.path.join(communs.name),"wb") as f:
-                f.write(communs.getbuffer())
+            defi.save_uploadedfile(communs)
         
         compteur +=1
         st.markdown(str(compteur)+". Glissez-déposez ici le fichier .tex des compétences des exercices communs : ")
         compeCommuns = defi.recupTex2()
         if compeCommuns is not None:
-            with open(os.path.join(compeCommuns.name),"wb") as f:
-                f.write(compeCommuns.getbuffer())
+            defi.save_uploadedfile(compeCommuns)
          
     if informations2[1] == "Oui" :
         compteur +=1
@@ -236,12 +232,22 @@ with tab6:
         #--------------------
         # Ajout du tableau avec les compétences de la classe.
         #--------------------
-                print("\\input{tableau-item-classe.tex} ",file=fichier_eval)
+                # print("\\input{tableau-item-classe.tex} ",file=fichier_eval)
                 
-                if informations2[0] == "o" :
-                    print("\\input{tableau-items-communs.tex} ",file=fichier_eval)
+                nom_fichier_tableau_classe="tableau-item-classe.tex"
+                fichier_tableau_classe=open(nom_fichier_tableau_classe, "r", encoding='UTF-8')
+                texte_tableau_classe=fichier_tableau_classe.read()
+                fichier_tableau_classe.close()
+                print(texte_tableau_classe,file=fichier_eval)
                 
-
+                
+                if informations2[0] == "Oui" :
+                    # print("\\input{tableau-items-communs.tex} ",file=fichier_eval)
+                    nom_fichier_tableau_communs="tableau-item-communs.tex"
+                    fichier_tableau_communs=open(nom_fichier_tableau_communs, "r", encoding='UTF-8')
+                    texte_tableau_communs=fichier_tableau_communs.read()
+                    fichier_tableau_communs.close()
+                    print(texte_tableau_communs,file=fichier_eval)
 
         #--------------------
         # Ajout du tableau avec les compétences à la carte.
@@ -261,7 +267,7 @@ with tab6:
         #--------------------
         # Ajout des exercices communs à la classe.
         #--------------------
-                if informations2[0] == "o" :
+                if informations2[0] == "Oui" :
                     print("\\input{exercices-communs.tex} \\",file=fichier_eval)
                 
                 
@@ -285,33 +291,22 @@ with tab6:
         #--------------------        
 
                 
-                if informations2[1]=="o" :
+                if informations2[1]=="Oui" :
                     print("\\input{facultatif.tex} \\",file=fichier_eval)                        
                 print("\\newpage",file=fichier_eval)
                                              
         print("\\end{document}",file=fichier_eval)
 
         fichier_eval.close()
-        
-        if st.button("Compiler pdfLatex"):
-            os.system("pdflatex "+nom_fichier_eval+".tex")
-            #os.startfile(nom_fichier_eval+".pdf")
-            subprocess.call(['pdflatex',nom_fichier_eval+".tex"])
-
-
-        
-        
-        #if st.button("Compiler avec pdfLatex"):
-        #    os.system("pdflatex "+nom_fichier_eval)
-            #os.startfile(nom_fichier_eval+".pdf")
-        #    subprocess.call(["pdflatex ",nom_fichier_eval])
-            nom_fichier_pdf = nom_fichier_eval[:-3]+"pdf"
-            print(nom_fichier_pdf)
-            with open(nom_fichier_eval, 'rb') as f:
-                if st.download_button('Téléchargez le fichier .tex', f, file_name=nom_fichier_eval):
-                    f.close()
-                    if st.button("Effacer le fichier .tex"):
-                        os.system("rm "+nom_fichier_eval)
-                        #os.startfile(nom_fichier_eval+".pdf")
-                        subprocess.call(['rm',nom_fichier_eval])
-                        st.write("Done")
+        nom_fichier_pdf = nom_fichier_eval[:-3]+"pdf"
+        st.write(nom_fichier_pdf)
+        with open(nom_fichier_eval, 'rb') as f:
+            st.download_button('Téléchargez le fichier .tex', f, file_name=nom_fichier_eval)
+        f.close()
+        #with open(nom_fichier_eval, 'rb') as f:
+        #if st.button("Effacer le fichier .tex"):
+        #    os.system("rm "+nom_fichier_eval)
+        #    #os.startfile(nom_fichier_eval+".pdf")
+        #    subprocess.call(['rm',nom_fichier_eval])
+        #    st.write("Done")
+        #    f.close()

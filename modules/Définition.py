@@ -53,10 +53,15 @@ def recupDemandes() :
         if fichierdemandes is not None :
             st.error("Erreur, cela ne semble pas être un fichier csv. Chargez un autre fichier SVP")
         return None
+    
+def save_uploadedfile(uploadedfile, nomfichier):
+     with open(os.path.join("tempDir",uploadedfile.name),"wb") as f:
+         f.write(uploadedfile.getbuffer())
+     return st.success("Saved File:{} to tempDir".format(uploadedfile.name))
 
 def recupTex1() :
     
-    fichierTex = st.file_uploader("Fichier Communs.tex contenant les exercices", label_visibility = "collapsed")
+    fichierTex = st.file_uploader("Fichier Communs.tex contenant les exercices", type = 'tex', label_visibility = "collapsed")
 
     if fichierTex is not None and fichierTex.name[-4:] == ".tex" :
 
