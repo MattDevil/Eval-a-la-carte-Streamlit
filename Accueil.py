@@ -301,13 +301,14 @@ with tab6:
         nom_fichier_tex = nom_fichier_eval[:-3]+"tex"
         # st.write(nom_fichier_pdf)
         with open(nom_fichier_eval, 'rb') as f:
-            st.download_button('Téléchargez le fichier .tex', f, file_name=nom_fichier_eval)
-        f.close()
-        with open(nom_fichier_eval, 'rb') as f:
-            if st.button("Effacer le fichier .tex"):
-                os.system("rm "+nom_fichier_eval)
-                #os.startfile(nom_fichier_eval+".pdf")
-                subprocess.call(['rm',nom_fichier_eval])
-                st.write("Done")
+            if st.download_button('Téléchargez le fichier .tex', f, file_name=nom_fichier_eval):
+                
+        # f.close()
+        # with open(nom_fichier_eval, 'rb') as f:
+                if st.button("Effacer le fichier .tex"):
+                    os.system("rm "+nom_fichier_eval)
+                    #os.startfile(nom_fichier_eval+".pdf")
+                    subprocess.call(['rm',nom_fichier_eval])
+                    st.write("Done")
         f.close()
     
