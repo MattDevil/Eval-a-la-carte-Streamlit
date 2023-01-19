@@ -31,4 +31,5 @@ $ streamlit run Accueil.py
 * [X] Déployer l'application sur un serveur
 * [ ] éviter la MAJ des certains fichiers (pifile py_cache etc...)
 * [x] Implémenter le téléchargement du fichier tex créé (indispensable en mode serveur).
+* [ ] Se dispenser des \input dans le tex final et produire un fichier directement compilable.
 
