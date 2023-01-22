@@ -33,7 +33,7 @@ with st.sidebar :
     
     with st.expander("Licence / crédits"):
         st.markdown('''
-        Version : 0.3 du 01-01-2023
+        Version : 0.4 du 22-01-2023
 
         Auteur : Matthieu DEVILLERS matthieu.devillers@ac-rennes.fr
 
@@ -180,21 +180,13 @@ with tab6:
         devoirclasse= informations2[2]
         exofacultatif=informations2[1]
  
-    
         # Création du fichier nom_fichier_eval.tex
-
         fichier_eval = open(nom_fichier_eval, "a", encoding='UTF-8')
-
         #--------------------
         # Ajout du Préambule à nom_fichier_eval.tex
         #--------------------
-
         nom_fichier_preambule="en-tete_fichier.tex"
-        fichier_preambule=open(nom_fichier_preambule, "r", encoding='UTF-8')
-        texte_preambule=fichier_preambule.read()
-        fichier_preambule.close()
-        print(texte_preambule,file=fichier_eval)
-        
+        print(defi.extraire_texte_fichier(nom_fichier_preambule),file=fichier_eval)
         #--------------------
         # Ajout de l'en-tête en_tete_eleve.tex
         #--------------------
@@ -202,12 +194,8 @@ with tab6:
         fichier_en_tete=open(nom_fichier_en_tete+".tex", "r", encoding='UTF-8')
         texte_en_tete=fichier_en_tete.read()
         fichier_en_tete.close()
-
         # Ajout de \begin{document}
-
         print("\\begin{document}",file=fichier_eval)
-
-
         #--------------------
         # Choix des items
         #--------------------
@@ -232,34 +220,28 @@ with tab6:
         #--------------------
         # Ajout du tableau avec les compétences de la classe.
         #--------------------
-                # print("\\input{tableau-item-classe.tex} ",file=fichier_eval)
-                
                 nom_fichier_tableau_classe="tableau-item-classe.tex"
-                fichier_tableau_classe=open(nom_fichier_tableau_classe, "r", encoding='UTF-8')
-                texte_tableau_classe=fichier_tableau_classe.read()
-                fichier_tableau_classe.close()
-                print(texte_tableau_classe,file=fichier_eval)
-                
-                
+                print(defi.extraire_texte_fichier(nom_fichier_tableau_classe),file=fichier_eval)
+
                 if informations2[0] == "Oui" :
                     # print("\\input{tableau-items-communs.tex} ",file=fichier_eval)
                     nom_fichier_tableau_communs="tableau-item-communs.tex"
                     fichier_tableau_communs=open(nom_fichier_tableau_communs, "r", encoding='UTF-8')
                     texte_tableau_communs=fichier_tableau_communs.read()
                     fichier_tableau_communs.close()
-                    print(texte_tableau_communs,file=fichier_eval)
+                    print(defi.extraire_texte_fichier(nom_fichier_tableau_communs),file=fichier_eval)
 
         #--------------------
         # Ajout du tableau avec les compétences à la carte.
         #--------------------
-
                 for i in range(1,len(demandes_eleve)) :
                     nom_item=liste_noms_items[k][i]
                     print("* ",nom_item," & & & & & \\\ ",file=fichier_eval)
                     print("\\hline",file=fichier_eval)
                 
                 if informations2[1]=="o" :
-                    print("\\input{tableau-facultatif.tex} \\",file=fichier_eval)
+                    #print("\\input{tableau-facultatif.tex} \\",file=fichier_eval)
+                    print(defi.extraire_texte_fichier("tableau-facultatif.tex"), file=fichier_eval)
               
                 print("\end{tabular}",file=fichier_eval)
                 print("\end{center}",file=fichier_eval)
@@ -268,7 +250,8 @@ with tab6:
         # Ajout des exercices communs à la classe.
         #--------------------
                 if informations2[0] == "Oui" :
-                    print("\\input{exercices-communs.tex} \\",file=fichier_eval)
+                    #print("\\input{exercices-communs.tex} \\",file=fichier_eval)
+                    print(defi.extraire_texte_fichier("exercice-communs.tex"),file=fichier_eval)
                 
                 
 
@@ -282,7 +265,8 @@ with tab6:
                     id_item=demandes_eleve[i]
                     if divers.tex_existe(id_item, repertoire_items, sep) :
                         chemin_item=divers.tex_hasard_item(id_item, repertoire_items,sep)
-                        print("\\input{"+chemin_item+"} \\par ",file=fichier_eval)
+                        print(defi.extraire_texte_fichier(chemin_item), file=fichier_eval)
+                        #print("\\input{"+chemin_item+"} \\par ",file=fichier_eval)
                         print("\\medskip",file=fichier_eval)
                 k=k+1
 
@@ -292,7 +276,8 @@ with tab6:
 
                 
                 if informations2[1]=="Oui" :
-                    print("\\input{facultatif.tex} \\",file=fichier_eval)                        
+                    print(defi.extraire_texte_fichier("facultatif.tex"), file=fichier_eval)
+                    #print("\\input{facultatif.tex} \\",file=fichier_eval)                        
                 print("\\newpage",file=fichier_eval)
                                              
         print("\\end{document}",file=fichier_eval)
@@ -303,11 +288,13 @@ with tab6:
         with open(nom_fichier_eval, 'rb') as f:
             if st.download_button('Téléchargez le fichier .tex', f, file_name=nom_fichier_eval) :
                 f.close()
-            
-            if st.button("Effacer le fichier .tex"):
                 os.system("rm "+nom_fichier_eval)
-                #os.startfile(nom_fichier_eval+".pdf")
                 subprocess.call(['rm',nom_fichier_eval])
-                st.write("Done")
-                f.close()
+            
+            #if st.button("Effacer le fichier .tex"):
+            #    os.system("rm "+nom_fichier_eval)
+            #    #os.startfile(nom_fichier_eval+".pdf")
+            #    subprocess.call(['rm',nom_fichier_eval])
+            #    st.write("Done")
+            #    f.close()
     

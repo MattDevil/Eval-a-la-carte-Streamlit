@@ -1,4 +1,4 @@
-import os, os.path, random, glob, csv, subprocess
+#import os, os.path, random, glob, csv, subprocess
 import streamlit as st
 import numpy as np
 import pandas as pd
@@ -173,3 +173,11 @@ def interfaceGraphique2():
         st.markdown(''':green[Dans l'onglet "Import", n'oubliez pas d'ajouter un fichier .tex contenant l'exercice facultatif.]''')
     
     return (exosCommuns, exoFacultatif, devoircommun)
+
+
+def extraire_texte_fichier (nom_fichier):
+    texte_extrait=""
+    fichier_ouvert=open(nom_fichier, "r", encoding='UTF-8')
+    texte_extrait=fichier_ouvert.read()
+    fichier_ouvert.close()
+    return texte_extrait
