@@ -226,9 +226,9 @@ with tab6:
                 if informations2[0] == "Oui" :
                     # print("\\input{tableau-items-communs.tex} ",file=fichier_eval)
                     nom_fichier_tableau_communs="tableau-item-communs.tex"
-                    fichier_tableau_communs=open(nom_fichier_tableau_communs, "r", encoding='UTF-8')
-                    texte_tableau_communs=fichier_tableau_communs.read()
-                    fichier_tableau_communs.close()
+                    #fichier_tableau_communs=open(nom_fichier_tableau_communs, "r", encoding='UTF-8')
+                    #texte_tableau_communs=fichier_tableau_communs.read()
+                    #fichier_tableau_communs.close()
                     print(defi.extraire_texte_fichier(nom_fichier_tableau_communs),file=fichier_eval)
 
         #--------------------
@@ -290,11 +290,3 @@ with tab6:
                 f.close()
                 os.system("rm "+nom_fichier_eval)
                 subprocess.call(['rm',nom_fichier_eval])
-            
-            #if st.button("Effacer le fichier .tex"):
-            #    os.system("rm "+nom_fichier_eval)
-            #    #os.startfile(nom_fichier_eval+".pdf")
-            #    subprocess.call(['rm',nom_fichier_eval])
-            #    st.write("Done")
-            #    f.close()
-    
