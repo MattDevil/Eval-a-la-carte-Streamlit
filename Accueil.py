@@ -2,7 +2,6 @@ import os, os.path, random, glob, csv, subprocess
 import streamlit as st
 import numpy as np
 import pandas as pd
-
 import modules.Définition as defi
 import modules.divers as divers
 from PIL import Image
