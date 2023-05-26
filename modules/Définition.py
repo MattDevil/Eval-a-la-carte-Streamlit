@@ -46,7 +46,7 @@ def recupDemandes() :
 
     if fichierdemandes is not None and fichierdemandes.name[-4:] == ".csv" :
         st.success("Fichier bien reçu !")
-        dataframe_demandes = pd.read_csv(fichierdemandes, sep, error_bad_lines=False)
+        dataframe_demandes = pd.read_csv (fichierdemandes, sep = sep) #, sep, on_bad_lines='skip')
         st.write(dataframe_demandes)
         return dataframe_demandes
     else :
