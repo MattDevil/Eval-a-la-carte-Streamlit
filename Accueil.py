@@ -33,7 +33,7 @@ with st.sidebar :
     
     with st.expander("Licence / crédits"):
         st.markdown('''
-        Version : 0.5 du 22-10-2024
+        Version : 0.5.1 du 22-10-2024
 
         Auteur : Matthieu DEVILLERS matthieu.devillers@ac-rennes.fr
 
