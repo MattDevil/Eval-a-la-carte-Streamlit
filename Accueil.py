@@ -293,25 +293,11 @@ with tab6:
 
         fichier_eval.close()
         
-        if st.button("Compiler pdfLatex"):
-            os.system("pdflatex "+nom_fichier_eval+".tex")
-            #os.startfile(nom_fichier_eval+".pdf")
-            subprocess.call(['pdflatex',nom_fichier_eval+".tex"])
-
-
-        
-        
-        #if st.button("Compiler avec pdfLatex"):
-        #    os.system("pdflatex "+nom_fichier_eval)
-            #os.startfile(nom_fichier_eval+".pdf")
-        #    subprocess.call(["pdflatex ",nom_fichier_eval])
-            nom_fichier_pdf = nom_fichier_eval[:-3]+"pdf"
-            print(nom_fichier_pdf)
-            with open(nom_fichier_eval, 'rb') as f:
-                if st.download_button('Téléchargez le fichier .tex', f, file_name=nom_fichier_eval):
-                    f.close()
-                    if st.button("Effacer le fichier .tex"):
-                        os.system("rm "+nom_fichier_eval)
-                        #os.startfile(nom_fichier_eval+".pdf")
-                        subprocess.call(['rm',nom_fichier_eval])
-                        st.write("Done")
+        with open(nom_fichier_eval, 'rb') as f:
+            if st.download_button('Téléchargez le fichier .tex', f, file_name=nom_fichier_eval):
+                f.close()
+                if st.button("Effacer le fichier .tex"):
+                    os.system("rm "+nom_fichier_eval)
+                    #os.startfile(nom_fichier_eval+".pdf")
+                    subprocess.call(['rm',nom_fichier_eval])
+                    st.write("Done")
