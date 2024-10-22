@@ -1,5 +1,15 @@
 # Eval à la carte
 
+Version 0.5 du 22-10-2024
+
+L’ensemble des fichiers est distribué sous la licence CC BY SA  https://creativecommons.org/licenses/by-sa/4.0/deed.fr
+
+Auteur : Matthieu DEVILLERS
+
+Ce projet s’inspire librement de celui de Rémi ANGOT : http://revue.sesamath.net/spip.php?article535
+
+
+
 ### Cloner le dépot ou télécharger l'ensemble des fichiers 
 
 ### Installer streamlit 
@@ -28,8 +38,6 @@ $ streamlit run Accueil.py
 * [ ] Commenter le code
 * [ ] Améliorer (nom des variables...)
 * [ ] Ouvrir le projet à des contributions extérieures
-* [X] Déployer l'application sur un serveur
-* [ ] éviter la MAJ des certains fichiers (pifile py_cache etc...)
-* [x] Implémenter le téléchargement du fichier tex créé (indispensable en mode serveur).
-* [ ] Se dispenser des \input dans le tex final et produire un fichier directement compilable.
+* [ ] Déployer l'application sur un serveur
+* [ ] éviter la MAJ des certains fichiers (pifile py_cache etc...) 
 

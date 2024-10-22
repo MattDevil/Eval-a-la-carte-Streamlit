@@ -46,22 +46,17 @@ def recupDemandes() :
 
     if fichierdemandes is not None and fichierdemandes.name[-4:] == ".csv" :
         st.success("Fichier bien reçu !")
-        dataframe_demandes = pd.read_csv (fichierdemandes, sep = sep) #, sep, on_bad_lines='skip')
+        dataframe_demandes = pd.read_csv(fichierdemandes, sep = sep)
         st.write(dataframe_demandes)
         return dataframe_demandes
     else :
         if fichierdemandes is not None :
             st.error("Erreur, cela ne semble pas être un fichier csv. Chargez un autre fichier SVP")
         return None
-    
-def save_uploadedfile(uploadedfile, nomfichier):
-     with open(os.path.join("tempDir",uploadedfile.name),"wb") as f:
-         f.write(uploadedfile.getbuffer())
-     return st.success("Saved File:{} to tempDir".format(uploadedfile.name))
 
 def recupTex1() :
     
-    fichierTex = st.file_uploader("Fichier Communs.tex contenant les exercices", type = 'tex', label_visibility = "collapsed")
+    fichierTex = st.file_uploader("Fichier Communs.tex contenant les exercices", label_visibility = "collapsed")
 
     if fichierTex is not None and fichierTex.name[-4:] == ".tex" :
 
@@ -173,11 +168,3 @@ def interfaceGraphique2():
         st.markdown(''':green[Dans l'onglet "Import", n'oubliez pas d'ajouter un fichier .tex contenant l'exercice facultatif.]''')
     
     return (exosCommuns, exoFacultatif, devoircommun)
-
-
-def extraire_texte_fichier (nom_fichier):
-    texte_extrait=""
-    fichier_ouvert=open(nom_fichier, "r", encoding='UTF-8')
-    texte_extrait=fichier_ouvert.read()
-    fichier_ouvert.close()
-    return texte_extrait
