@@ -135,7 +135,7 @@ with tab4:
 
 with tab5:
     st.write("Utilisez l'interface ci-dessous pour uploader vos fichiers tex.")
-    divers.file_management_tab("items/")
+    divers.file_management_tab("items")
 
 with tab6:
     compteur = 1
