@@ -1,6 +1,7 @@
 
 import os, os.path, random, glob, csv, subprocess
 import streamlit as st
+import shutil
 
 #Cherche si un fichier .tex commençant par id_item existe dans repertoire_items
 def tex_existe(id_item, repertoire_items, sep):
