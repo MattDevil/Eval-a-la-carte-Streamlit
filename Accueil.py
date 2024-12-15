@@ -33,7 +33,7 @@ with st.sidebar :
     
     with st.expander("Licence / crédits"):
         st.markdown('''
-        Version : 0.5.1 du 22-10-2024
+        Version : 0.6.0 du 15-12-2024
 
         Auteur : Matthieu DEVILLERS matthieu.devillers@ac-rennes.fr
 
@@ -83,7 +83,7 @@ st.write("""
 #####################################
 
 
-tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["Accueil","Paramètres", "Options", "Bilan", "Import", "Export"])
+tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(["Accueil","Paramètres", "Options", "Bilan", "Exercices", "Import", "Export"])
 
 with tab1:
     
@@ -131,9 +131,11 @@ with tab4:
         for i in range(3):
             st.write(infos2[i]," : ",informations2[i])
 
-
-
 with tab5:
+    st.write("Toto")
+    # Placer ici le code Claude
+
+with tab6:
     compteur = 1
     st.markdown(str(compteur)+". Glissez-déposez ici le fichier csv des demandes des élèves (export SACoche) : ") 
     demandes = defi.recupDemandes()
@@ -168,7 +170,7 @@ with tab5:
             with open(os.path.join(compeFacultatif.name),"wb") as f:
                 f.write(compeFacultatif.getbuffer())
  
-with tab6:
+with tab7:
     if st.button("Générer l'évaluation"):
         liste_noms_items=[]
         date = informations[2]
