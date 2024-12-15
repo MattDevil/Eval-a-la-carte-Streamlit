@@ -2,6 +2,7 @@ import os, os.path, random, glob, csv, subprocess
 import streamlit as st
 import numpy as np
 import pandas as pd
+import shutil
 
 import modules.Définition as defi
 import modules.divers as divers
@@ -133,8 +134,8 @@ with tab4:
             st.write(infos2[i]," : ",informations2[i])
 
 with tab5:
-    st.write("Toto")
-    # Placer ici le code Claude
+    st.write("Utilisez l'interface ci-dessous pour uploader vos fichiers tex.")
+    divers.file_management_tab("items/")
 
 with tab6:
     compteur = 1
