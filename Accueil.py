@@ -65,6 +65,7 @@ with st.sidebar :
         streamlit run Accueil.py
         ```        
         """)
+        st.markdown("Une version de test est [disponilbe ici](https://eval-a-la-carte.streamlit.app/)")
         
 ######################################
 #   Page principale
